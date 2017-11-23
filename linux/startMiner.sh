@@ -1,3 +1,4 @@
+#!/bin/sh
 docker run \
  -it \
  -v ethereum:/data \

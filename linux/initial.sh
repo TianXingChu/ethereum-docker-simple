@@ -1,3 +1,4 @@
+#!/bin/sh
 docker volume remove ethereum
 docker volume create ethereum
 docker run \
