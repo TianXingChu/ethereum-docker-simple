@@ -1,6 +1,7 @@
 docker run^
  -it^
- -p 30303^
+ --name geth^
+ -p 30303:30303^
  -v ethereum:/data^
  chutianxing/ethereum-docker-simple^
  --mine^
