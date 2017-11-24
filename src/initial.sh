@@ -14,7 +14,7 @@ init \
 if [ "$1" == "bootnode" ]
 then
   echo "using **ORIGINAL** nodekey"
-  cp -f /opt/geth-shell/boot.key.bak /opt/geth-shell/boot.key
+  cp -f /opt/geth-shell/boot.key /data/ethereum/boot.key
 else
   echo "using **NEW** nodekey"
   cat /dev/urandom | tr -cd 'a-f0-9' | head -c 64 > /data/ethereum/boot.key
