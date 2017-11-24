@@ -4,4 +4,4 @@ docker run^
  --rm^
  -v ethereum:/data^
  chutianxing/ethereum-docker-simple^
- /opt/geth-shell/initial.sh
+ /opt/geth-shell/initial.sh %1

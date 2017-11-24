@@ -1,6 +1,7 @@
 #!/bin/sh
 docker run \
  -it \
+ --rm \
  --name geth \
  -p 30303:30303 \
  -p 8546:8546 \
