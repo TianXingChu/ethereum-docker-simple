@@ -1,6 +1,7 @@
 #!/bin/sh
 docker run \
- -d \
+ -it \
+ --rm \
  --name geth \
  -p 30303:30303 \
  -p 127.0.0.1:8546:8546 \
