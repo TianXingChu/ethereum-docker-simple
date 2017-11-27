@@ -1,5 +1,5 @@
 docker run^
- -it^
+ -d^
  --rm^
  --name geth^
  -p 30303:30303^
