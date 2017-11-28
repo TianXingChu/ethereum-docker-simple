@@ -289,4 +289,4 @@ chutianxing@chutianxing-HP-Pavilion-dv6-Notebook-PC:~$ docker attach geth
 ```
 
 ###### 电脑重启后如何恢复节点工作
-首先是启动docker, 在Windows和MacOs中都有图形化的界面可以启动docker, 在linux中docker会在电脑重启后自动启动(如果你没有动过什么配置的话). 在启动docker之后, 再次执行[然后就可以启动节点了](###然后就可以启动节点了)中的步骤.
+首先是启动docker, 在Windows和MacOs中都有图形化的界面可以启动docker, 在linux中docker会在电脑重启后自动启动(如果你没有动过什么配置的话). 在启动docker之后, 再次执行[然后就可以启动节点了](#然后就可以启动节点了)中的步骤.
