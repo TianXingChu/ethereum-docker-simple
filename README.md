@@ -4,15 +4,15 @@ Read this in other languages: [简体中文](README.md), [English](README.en-US.
 
 这个镜像以"ethereum/client-go"为基础, 并为方便搭建私链网络进行了一些简单的调整. 它发布于Docker Hub的"chutianxing/ethereum-docker-simple"上. 几天前, ethereum官方发布了最新的client-go镜像, 最新版本以alpine为基础的, 老版本以ubuntu为基础, 这导致很多以go-client为基础的镜像无法正常工作, 所以我创建了这个项目, 理论上只要ethereum不做大的调整, 这个镜像应该一直可以完美的运行. 在Windows,Linux和MacOs上安装和运行脚本都已经过测试, 可以完美运行.
 
-### 前置条件
+## 前置条件
 
-##### 安装git
+### 安装git
 请参考[git](https://git-scm.com/)官网上的安装步骤.
 
-##### 安装docker
+### 安装docker
 请参考[docker](https://www.docker.com/)官网上的安装步骤.
 
-##### 检查安装是否成功
+### 检查安装是否成功
 ```sh
 C:\Users\chuti> git --version
 git version 2.14.1.windows.1
@@ -21,7 +21,7 @@ Docker version 17.09.0-ce, build afdb6d4
 ```
 如果在命令行窗口你看到了类似上面的反应, 说明安装是成功的, 现在我们就可以正式开始运行ethereum的docker镜像了.
 
-### 首先从GitHub上拉取最新的项目代码
+## 首先从GitHub上拉取最新的项目代码
 打开命令行窗口, 创建一个新的文件夹, 在这个文件夹中运行指令, 在我们的实例中, 文件夹为/use/local/test/GitHub.
 ```sh
 [chutianxing@myaliyun GitHub]$ git clone https://github.com/TianXingChu/ethereum-docker-simple.git
@@ -36,21 +36,21 @@ Receiving objects: 100% (115/115), 13.18 KiB | 0 bytes/s, done.
 Resolving deltas: 100% (54/54), done.
 ```
 
-### 接下来运行初始化脚本
+## 接下来运行初始化脚本
 有两种ethereum节点, bootnode和非bootnode. 事实上, 这两种节点从功能上看完全相同, 只是bootnode部署在服务器端, 有固定的ip和nodekey, 方便非bootnode以一个固定的访问方式去与它创建连接. 而非bootnode可以以一个随机的nodekey去与其他节点创建连接, 当然, 非bootnode最好拥有一个固定的钱包私钥, 这样才能挖到以太币方便进行开发测试. 所以在一个私链网络中, 通常含有一个bootnode和多个非bootnode.
 
 在我们的服务器上, 已经部署了一个bootnode, 所以如果没有其他特殊原因, 可以直接初始化为非bootnode.
 
-##### 初始化为非bootnode
-###### Linux
+### 初始化为非bootnode
+Linux
 ```sh
 chutianxing@chutianxing-HP:~/develop/GitHub/ethereum-docker-simple$ sudo sh posix/initial.sh
 ```
-###### Windows
+Windows
 ```sh
 C:\Develop\GitHub\ethereum-docker-simple>windows\initial.bat
 ```
-###### MacOs
+MacOs
 ```sh
 ChuTianXings-Macbook-Air:ethereum-docker-simple chutianxing$ sh posix/initial.sh
 ```
@@ -77,17 +77,17 @@ using **NEW** nodekey
 ```
 
 
-##### 初始化为bootnode
+### 初始化为bootnode
 除非你想自己重新搭建一套独立于我们测试链的环境, 才需要执行这个步骤.--不推荐
-###### Linux
+Linux
 ```sh
 chutianxing@chutianxing-HP:~/develop/GitHub/ethereum-docker-simple$ sudo sh posix/initial.sh bootnode
 ```
-###### Windows
+Windows
 ```sh
 C:\Develop\GitHub\ethereum-docker-simple>windows\initial.bat bootnode
 ```
-###### MacOs
+MacOs
 ```sh
 ChuTianXings-Macbook-Air:ethereum-docker-simple chutianxing$ sh posix/initial.sh bootnode
 ```
@@ -113,16 +113,16 @@ INFO [11-27|08:34:41] Successfully wrote genesis state         database=lightcha
 using **ORIGINAL** nodekey
 ```
 
-### 然后就可以启动节点了
-###### Linux
+## 然后就可以启动节点了
+Linux
 ```sh
 chutianxing@chutianxing-HP:~/develop/GitHub/ethereum-docker-simple$ sudo sh posix/startMiner.sh
 ```
-###### Windows
+Windows
 ```sh
 C:\Develop\GitHub\ethereum-docker-simple>windows\startMiner.bat
 ```
-###### MacOs
+MacOs
 ```sh
 ChuTianXings-Macbook-Air:ethereum-docker-simple chutianxing$ sh posix/startMiner.sh
 ```
@@ -199,7 +199,7 @@ at block: 0 (Thu, 01 Jan 1970 00:00:00 UTC)
 }
 ```
 
-###### 下面简单介绍下geth的几个常用命令
+### 下面简单介绍下geth的几个常用命令
 获取自己的钱包地址
 ```sh
 > eth.accounts
@@ -262,16 +262,16 @@ true
 ```
 上面返回交易被记录的区块索引号:2671, 区块哈希值(blockHash), 交易的发送方(from)和接收方(to), 交易金额(value), 交易发送方为本次交易提供的gas和gas价格(gasPrice), 以及本次交易在区块儿中的交易索引号(transactionIndex).
 
-### QA
-###### 如何关闭节点
+## QA
+### 如何关闭节点
 ```sh
 > exit
 ```
 
-###### 如何让节点在后台运行
+### 如何让节点在后台运行
 直接关闭窗口就可以了, 以太坊节点会在后台继续运行的
 
-###### 如何确认节点在后台的运行情况
+### 如何确认节点在后台的运行情况
 运行 docker ps -a就可以了, 在Linux,MacOs,Windows上面, 都是这个指令, 唯一可能有区别的就是权限问题, 如果在Linux或者MacOs上面遇到权限问题, 在命令行的开头添加sudo就可以了.
 ```sh
 chutianxing@chutianxing-HP-Pavilion-dv6-Notebook-PC:~$ docker ps -a
@@ -283,10 +283,10 @@ CONTAINER ID        IMAGE                                COMMAND                
 ```
 如果出现上面 IMAGE名称为"chutianxing/ethereum-docker-simple"的记录, 并且STATUS为"Up ..."就说明节点在后台运行正常.
 
-###### 如何把在后台运行的节点调度到前台
+### 如何把在后台运行的节点调度到前台
 ```sh
 chutianxing@chutianxing-HP-Pavilion-dv6-Notebook-PC:~$ docker attach geth
 ```
 
-###### 电脑重启后如何恢复节点工作
+### 电脑重启后如何恢复节点工作
 首先是启动docker, 在Windows和MacOs中都有图形化的界面可以启动docker, 在linux中docker会在电脑重启后自动启动(如果你没有动过什么配置的话). 在启动docker之后, 再次执行[然后就可以启动节点了](#然后就可以启动节点了)中的步骤.
