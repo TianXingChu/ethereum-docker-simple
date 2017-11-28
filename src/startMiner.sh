@@ -18,7 +18,7 @@ cat /data/ethereum/boot.key
 echo ""
 
 geth --mine \
---ws \
+--rpc \
 --minerthreads=1 \
 --etherbase=0x$address \
 --networkid 1 \
