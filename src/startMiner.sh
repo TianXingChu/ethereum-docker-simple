@@ -19,6 +19,7 @@ echo ""
 
 geth --mine \
 --rpc \
+--rpccorsdomain "*" \
 --minerthreads=1 \
 --etherbase=0x$address \
 --networkid 1 \
